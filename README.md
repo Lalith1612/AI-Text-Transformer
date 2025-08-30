@@ -1,4 +1,4 @@
-✨ AI Text Transformer
+<h1 align="center">✨ AI Text Transformer</h1>
 
 Deployment Link: https://ai-text-transformer-lk1612mt2qwu5bo22nfsf.streamlit.app/ 
 
