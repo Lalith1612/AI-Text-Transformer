@@ -96,23 +96,28 @@ clear_btn = cols[1].button("✖ Clear Input", use_container_width=True)
 undo_btn = cols[2].button("↺ Restore Last Input", use_container_width=True)
 
 with col2:
-    st.subheader(" Output")
-    # text_input = st.textbox("Your transformed text is here:", height=250, value=st.session_state["last_input"])
-    output_container = st.container()
+    st.subheader("Output")
+    st.caption("Your transformed text is here:")
 
     if st.session_state["history"]:
         last = st.session_state["history"][-1]
-        # Renders all outputs from last run
         for o in last["outputs"]:
+            # static output box
             st.markdown(
-                f"<div class='output-box' id='out-{o['id']}'>{o['text']}</div>",
+                f"<div class='output-box'>{o['text']}</div>",
                 unsafe_allow_html=True
             )
-            js = f"""
-            <button class='copy-btn' onclick='navigator.clipboard.writeText({json.dumps(o['text'])})'>Copy</button>
-            """
-            st.markdown(js, unsafe_allow_html=True)
-            st.download_button("Download .txt", o['text'], file_name=f"output_{o['style']}.txt")
+
+            # place Copy + Download buttons side by side, equal size
+            btn_cols = st.columns(2)
+            with btn_cols[0]:
+                js = f"""
+                <button class='copy-btn' onclick='navigator.clipboard.writeText({json.dumps(o['text'])})'>Copy</button>
+                """
+                st.markdown(js, unsafe_allow_html=True)
+            with btn_cols[1]:
+                st.download_button("Download .txt", o['text'], file_name=f"output_{o['style']}.txt", use_container_width=True)
+
     else:
         st.markdown(
             "<div class='output-box muted'>Your output will appear here after transformation.</div>",
