@@ -112,7 +112,7 @@ with col2:
             btn_cols = st.columns(2)
             with btn_cols[0]:
                 js = f"""
-                <button class='copy-btn' onclick='navigator.clipboard.writeText({json.dumps(o['text'])})'>Copy</button>, use_container_width=True
+                <button class='copy-btn' onclick='navigator.clipboard.writeText({json.dumps(o['text'])})'>Copy</button>
                 """
                 st.markdown(js, unsafe_allow_html=True)
             with btn_cols[1]:
