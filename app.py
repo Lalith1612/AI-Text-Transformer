@@ -92,8 +92,8 @@ if uploaded_file is not None:
 # Actions row (equal sized buttons)
 cols = st.columns(3)
 transform_btn = cols[0].button("✨ Transform", use_container_width=True)
-clear_btn = cols[1].button("✖ Clear Input", use_container_width=True)
-undo_btn = cols[2].button("↺ Restore Last Input", use_container_width=True)
+clear_btn = cols[1].button(" Clear Input", use_container_width=True)
+undo_btn = cols[2].button(" Restore Last Input", use_container_width=True)
 
 with col2:
     st.subheader("Output")
@@ -112,7 +112,7 @@ with col2:
             btn_cols = st.columns(2)
             with btn_cols[0]:
                 js = f"""
-                <button class='copy-btn' onclick='navigator.clipboard.writeText({json.dumps(o['text'])})'>Copy</button>
+                <button class='copy-btn' onclick='navigator.clipboard.writeText({json.dumps(o['text'])})'>Copy</button>, use_container_width=True
                 """
                 st.markdown(js, unsafe_allow_html=True)
             with btn_cols[1]:
